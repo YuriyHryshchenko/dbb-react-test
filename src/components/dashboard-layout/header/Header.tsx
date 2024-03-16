@@ -1,5 +1,5 @@
 import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/menu';
+import MenuIcon from '@mui/icons-material/Menu';
 import NextLink from 'next/link';
 import { ROUTES_CONFIG } from '@/config/page-url.config';
 
