@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        ACCESS_TOKEN: process.env.ACCESS_TOKEN,
+        REFRESH_TOKEN: process.env.REFRESH_TOKEN,
+        CLIENT_ID: process.env.CLIENT_ID,
+        CLIENT_SECRET: process.env.CLIENT_SECRET,
     },
     redirects: async () => {
         return [
