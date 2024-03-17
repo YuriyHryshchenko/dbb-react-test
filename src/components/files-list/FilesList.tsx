@@ -1,7 +1,5 @@
 'use client';
-import { useState } from 'react';
 import { getFilesList } from '@/services/dropbox.service';
-import { useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { PageBreadcrumbs } from '@/components/page-breadcrumbs/PageBreadcrumbs';
 import { FilesListItem } from '@/components/files-list/FilesListItem';
@@ -13,20 +11,10 @@ type FilesListPropsType = {
 };
 
 export function FilesList({ pathToFolder }: FilesListPropsType) {
-  const router = useRouter();
-  const [path, setPath] = useState(pathToFolder);
-
   const { data, isLoading, isSuccess, isError } = useQuery({
-    queryKey: ['files', path],
-    queryFn: () => getFilesList(path),
+    queryKey: ['files', pathToFolder],
+    queryFn: () => getFilesList(pathToFolder),
   });
-
-  const handleFolderClick = (folderPath: string | undefined) => {
-    if (!folderPath) return;
-
-    router.push(`/home/${folderPath}`);
-    setPath(folderPath);
-  };
 
   return (
     <div>
@@ -55,7 +43,6 @@ export function FilesList({ pathToFolder }: FilesListPropsType) {
               key={file.name}
               fileName={file.name}
               tag={file['.tag']}
-              onFolderClick={handleFolderClick}
               path={file.path_display}
             />
           ))}

@@ -7,23 +7,18 @@ import {
 } from '@mui/material';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FolderIcon from '@mui/icons-material/Folder';
+import NextLink from 'next/link';
 
 type FilesListItemProps = {
   fileName: string;
   tag: string;
-  onFolderClick: (folderPath: string | undefined) => void;
   path?: string;
 };
-export function FilesListItem({
-  fileName,
-  tag,
-  onFolderClick,
-  path,
-}: FilesListItemProps) {
+export function FilesListItem({ fileName, tag, path }: FilesListItemProps) {
   return (
     <Card sx={{ flex: '0 1 345px' }}>
       {tag === 'folder' ? (
-        <CardActionArea onClick={() => onFolderClick(path)}>
+        <CardActionArea component={NextLink} href={`/home/${path}`}>
           <Box p={2} sx={{ display: 'flex' }}>
             <FolderIcon sx={{ height: '100px', flex: '1 0 100%' }} />
           </Box>
