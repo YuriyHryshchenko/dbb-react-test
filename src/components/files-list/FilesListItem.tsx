@@ -18,7 +18,7 @@ export function FilesListItem({ fileName, tag, path }: FilesListItemProps) {
   return (
     <Card sx={{ flex: '0 1 345px' }}>
       {tag === 'folder' ? (
-        <CardActionArea component={NextLink} href={`/home/${path}`}>
+        <CardActionArea component={NextLink} href={`/home${path}`}>
           <Box p={2} sx={{ display: 'flex' }}>
             <FolderIcon sx={{ height: '100px', flex: '1 0 100%' }} />
           </Box>
